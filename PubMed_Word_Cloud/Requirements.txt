@@ -1,0 +1,34 @@
+### PubMed Word Cloud Generator ###
+
+# What it does:
+#   Generates word cloud from terms mentioned in freely-available texts
+#   extracted from PubMed queries for specific terms. Also normalizes 
+#   the names of extracted terms and colors them according to type (drug, 
+#   disease, method, etc.) 
+
+# Why?
+#   Provides a visually appealing landscape view of terms in the same domain
+#   as search terms. Useful for review articles to visualize semantic
+#   neighborhood of a given topic.
+
+# How will the code work?
+#   1. Use entrez utilities to access PubMed through API. 
+#   See for documentation: https://www.ncbi.nlm.nih.gov/books/NBK25501/
+
+#   2. Use Natural Language Toolkit (NLTK) for Python to generate bag-of-words
+#   and generate term lists.
+#   See for documentation: https://www.nltk.org/
+
+#   3. Clean bag-of-words
+#       Remove "Stop words" (common words and articles)
+#       Lowercase everything
+#       De-pluralize terms
+
+#   4. Extract Drug, Disease, and Methods terms
+#       Cross-reference with ontologies (MONDO, Pubchem, methods ontologies(?))
+#       Generate key value pairs ('MONDO:0004992': 'cancer')
+#       Clean if necessary and count term occurence
+#       Remove if <2 counts.
+
+#   5. Generate word cloud
+#       Use wordcloud Python library: http://amueller.github.io/word_cloud/
